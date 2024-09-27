@@ -13,9 +13,9 @@ out
 .env.production.local
 
 # tmp files, logs, and input-props
-_*
 tmp
 *.log
+*.mp3
 input-props.json
 
 # package managers
