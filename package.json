@@ -5,7 +5,7 @@
     "remotion:studio": "remotion studio",
     "remotion:chrome": "remotion browser ensure",
     "remotion:render": "remotion render islamic-video out/video.mp4 --props='./input-props.json'",
-    "render": "node remotion/generate-props.js",
+    "render": "node --no-warnings remotion/generate-props.js && bun run remotion:render",
     "lint": "eslint --ext ts,tsx --cache --max-warnings 0",
     "typecheck": "tsc --noEmit"
   },

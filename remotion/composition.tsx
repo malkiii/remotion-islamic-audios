@@ -16,8 +16,6 @@ const fontFamily = 'Local';
 loadFont({
   family: fontFamily,
   url: staticFile('fonts/Diwani-Bent.ttf'),
-}).then(() => {
-  console.log('Font loaded!');
 });
 
 export const VideoComposition: React.FC<CompositionProps> = (props) => {
@@ -31,7 +29,7 @@ export const VideoComposition: React.FC<CompositionProps> = (props) => {
           inset: 0,
           width: '100%',
           height: '100%',
-          filter: 'blur(20px) saturate(60%) contrast(1.2)',
+          filter: 'saturate(50%) contrast(1.2)',
           border: 'none',
           outline: 'none',
           objectFit: 'cover',
@@ -43,7 +41,8 @@ export const VideoComposition: React.FC<CompositionProps> = (props) => {
           height: '100%',
           display: 'flex',
           justifyContent: 'center',
-          background: 'rgba(0,0,0,0.63)',
+          background: 'rgba(0,0,0,0.75)',
+          backdropFilter: 'blur(20px)',
           color: 'white',
         }}
       >
@@ -59,11 +58,22 @@ export const VideoComposition: React.FC<CompositionProps> = (props) => {
             textAlign: 'center',
           }}
         >
+          <Img
+            src={staticFile(props.image)}
+            style={{
+              width: '33%',
+              aspectRatio: '1/1',
+              borderRadius: '50%',
+              display: 'block',
+              margin: '0 auto',
+              filter: 'contrast(1.2) brightness(0.9) saturate(90%)',
+            }}
+          />
           <div
             style={{
               display: 'block',
               fontFamily,
-              fontSize: '8.5rem',
+              fontSize: '6.5rem',
               whiteSpace: 'nowrap',
               marginBottom: '13rem',
             }}

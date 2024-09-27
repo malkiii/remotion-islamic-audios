@@ -3,7 +3,7 @@ import { getAudioData } from '@remotion/media-utils';
 import { VideoComposition } from './composition';
 import { compositionSchema } from './schema';
 
-const FPS = 40;
+const FPS = 30;
 
 export const RemotionRoot: React.FC = () => {
   return (
@@ -16,10 +16,8 @@ export const RemotionRoot: React.FC = () => {
       durationInFrames={FPS * 5}
       schema={compositionSchema}
       defaultProps={{
-        // sheikhName: 'Sheikh Name',
-        // sheikhImage: 'sheikh.jpg',
-        name: 'الشيخ عثمان الخميس',
-        image: 'othman-alkhamees.jpg',
+        name: 'Sheikh Name in Arabic',
+        image: 'sheikh.jpg',
         audio: 'audio.mp3',
       }}
       calculateMetadata={async ({ props }) => {
