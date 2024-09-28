@@ -47,8 +47,20 @@ p.outro('Props generated successfully! ✨');
  */
 async function downloadAudio(url) {
   const outputDir = path.resolve(process.cwd(), 'public');
-  const downloader = new Downloader({ outputDir, silentMode: true });
 
+  const files = fs.readdirSync(outputDir);
+
+  // Remove all mp3 files in the directory
+  files.forEach((file) => {
+    const filePath = path.join(outputDir, file);
+
+    // Check if the file is an mp3 file and not "audio.mp3"
+    if (file.endsWith('.mp3') && file !== 'audio.mp3') {
+      fs.unlinkSync(filePath);
+    }
+  });
+
+  const downloader = new Downloader({ outputDir, silentMode: true });
   const audioFile = await downloader.downloadSong(url);
 
   return audioFile;
