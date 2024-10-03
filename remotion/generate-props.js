@@ -18,8 +18,9 @@ const group = await p.group(
     audio: () =>
       p.text({
         message: 'What is the URL of the video?',
+        placeholder: 'or use audio.mp3 in ./public folder.',
         validate(url) {
-          z.string().url().parse(url);
+          z.string().url().optional().parse(url);
         },
       }),
   },
@@ -43,10 +44,12 @@ generateProps({ ...group.sheikh, audio: path.basename(audioFile) });
 p.outro('Props generated successfully! ✨');
 
 /**
- * @param {string} url
+ * @param {string | undefined} url
  */
 async function downloadAudio(url) {
   const outputDir = path.resolve(process.cwd(), 'public');
+
+  if (!url) return path.join(outputDir, 'audio.mp3');
 
   const files = fs.readdirSync(outputDir);
 
