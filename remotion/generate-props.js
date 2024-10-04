@@ -20,7 +20,7 @@ const group = await p.group(
         message: 'What is the URL of the video?',
         placeholder: 'or use audio.mp3 in ./public folder.',
         validate(url) {
-          z.string().url().optional().parse(url);
+          url && z.string().url().parse(url);
         },
       }),
   },
